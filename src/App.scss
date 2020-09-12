@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap");
+
+$main-blue: #0984e3;
+$secondary-blue: #192a56;
+
+html {
+  background-color: $main-blue;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #0984e3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+button,
+input[type="submit"] {
+  font-size: 1em;
+  padding: 10px 20px;
+  border: none;
+  background-color: $main-blue;
+  margin: 5px;
+  color: #fff;
+
+  &:focus {
+    outline: 0;
+    border: 2px solid $secondary-blue;
+  }
+}
+
+input[type="text"],
+input[type="password"] {
+  &:focus {
+    outline: 0;
+    border: 2px solid $secondary-blue !important;
+  }
+}
+
+input {
+  display: block;
+}
+
+.home-container {
+  padding: 20px;
+  flex: 1 0 0;
+  max-width: 500px;
+
+  h1 {
+    font-weight: 900;
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(70, 70, 70, 0.37);
+  }
+}
+
+.login-box {
+  box-sizing: border-box;
+  padding: 20px;
+  width: 100%;
+  border-radius: 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 0px 20px rgba($color: #2b2b2b, $alpha: 0.2);
+
+  .login-form {
+    text-align: left;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      border: 1px solid rgb(185, 185, 185);
+      padding: 5px;
+      margin: 5px 0px;
+      font-size: 1.2em;
+    }
+
+    .login-submit {
+      margin: auto;
+      margin-top: 15px;
+      width: 80%;
+    }
+  }
+
+  .no-account-prompt {
+    margin-top: 15px;
+
+    p {
+      font-size: 90%;
+      margin-bottom: 2px;
+    }
+
+    button {
+      padding: 8px 15px;
+    }
+  }
+}
