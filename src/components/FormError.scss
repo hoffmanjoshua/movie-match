@@ -1,0 +1,15 @@
+@import "../variables.scss";
+
+.form-error-box {
+  width: 100%;
+  padding: 7px 10px;
+  background-color: $error-color;
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 1em;
+
+  p {
+    margin: 0;
+  }
+}

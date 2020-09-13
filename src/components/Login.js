@@ -1,9 +1,12 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { withRouter, Redirect } from "react-router";
 import app from "../firebase";
 import { AuthContext } from "../Auth.js";
+import FormError from "./FormError";
 
 const Login = ({ history }) => {
+  const [errorMsg, setErrorMsg] = useState(null);
+
   const handleLogin = useCallback(
     async (event) => {
       event.preventDefault();
@@ -12,9 +15,11 @@ const Login = ({ history }) => {
         await app
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
+        setErrorMsg(null);
         history.push("/dashboard");
       } catch (error) {
-        alert(error);
+        console.log(error);
+        setErrorMsg(error.code);
       }
     },
     [history]
@@ -27,17 +32,18 @@ const Login = ({ history }) => {
   }
 
   return (
-    <div class="home-container">
+    <div className="home-container">
       <h1>Movie Match</h1>
       <div className="login-box">
         <form onSubmit={handleLogin} className="login-form">
-          <label for="Email">Email</label>
+          {errorMsg && <FormError message={errorMsg} />}
+          <label htmlFor="Email">Email</label>
           <input type="text" className="login-email" name="email" />
-          <label for="Password">Password</label>
+          <label htmlFor="Password">Password</label>
           <input type="password" className="login-password" name="password" />
           <input type="submit" className="login-submit" value="Login" />
         </form>
-        <div class="no-account-prompt">
+        <div className="no-account-prompt">
           <p>Don't have account?</p>
           <a href="/signup">
             <button className="signup-btn">Create an Account</button>

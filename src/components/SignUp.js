@@ -20,14 +20,14 @@ const SignUp = ({ history }) => {
   );
 
   return (
-    <div class="home-container">
+    <div classNAme="home-container">
       <h1>Movie Match</h1>
       <div className="login-box">
         <h3>Create an Account</h3>
         <form className="login-form" onSubmit={handleSignUp}>
-          <label for="Email">Email</label>
+          <label htmlFor="Email">Email</label>
           <input type="text" className="login-email" name="email" />
-          <label for="Password">Password</label>
+          <label htmlFor="Password">Password</label>
           <input type="password" className="login-password" name="password" />
           <input type="submit" className="login-submit" value="Sign Up" />
         </form>

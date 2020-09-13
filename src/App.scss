@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap");
-
-$main-blue: #0984e3;
-$secondary-blue: #192a56;
+@import "./variables.scss";
 
 html {
   background-color: $main-blue;
