@@ -32,23 +32,20 @@ const Login = ({ history }) => {
   }
 
   return (
-    <div className="home-container">
-      <h1>Movie Match</h1>
-      <div className="login-box">
-        <form onSubmit={handleLogin} className="login-form">
-          {errorMsg && <FormError message={errorMsg} />}
-          <label htmlFor="Email">Email</label>
-          <input type="text" className="login-email" name="email" />
-          <label htmlFor="Password">Password</label>
-          <input type="password" className="login-password" name="password" />
-          <input type="submit" className="login-submit" value="Login" />
-        </form>
-        <div className="no-account-prompt">
-          <p>Don't have account?</p>
-          <a href="/signup">
-            <button className="signup-btn">Create an Account</button>
-          </a>
-        </div>
+    <div className="login-box">
+      <form onSubmit={handleLogin} className="login-form">
+        {errorMsg && <FormError message={errorMsg} />}
+        <label htmlFor="Email">Email</label>
+        <input type="email" className="login-email" name="email" />
+        <label htmlFor="Password">Password</label>
+        <input type="password" className="login-password" name="password" />
+        <input type="submit" className="login-submit" value="Login" />
+      </form>
+      <div className="no-account-prompt">
+        <p>Don't have account?</p>
+        <a href="/signup">
+          <button className="signup-btn">Create an Account</button>
+        </a>
       </div>
     </div>
   );

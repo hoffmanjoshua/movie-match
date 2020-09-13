@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import "./App.scss";
 import Login from "./components/Login";
@@ -8,15 +8,21 @@ import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 
 function App() {
+  useEffect(() => {
+    document.title = "Movie Match";
+  });
+
   return (
     <AuthProvider>
       <div className="App">
-        <Router>
-          <Redirect from="*" to="/" />
-          <Route exact path="/" component={Login} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/signup" component={SignUp} />
-        </Router>
+        <div class="home-container">
+          <h1>Movie Match</h1>
+          <Router>
+            <Route exact path="/" component={Login} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/signup" component={SignUp} />
+          </Router>
+        </div>
       </div>
     </AuthProvider>
   );

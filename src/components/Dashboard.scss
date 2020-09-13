@@ -1,0 +1,25 @@
+@import "../variables.scss";
+
+.dashboard-container {
+  background: #fff;
+  width: 100%;
+  max-width: 800px;
+
+  .dashboard-top-bar {
+    border-bottom: 1px solid rgb(221, 221, 221);
+    box-shadow: 0 4px 6px -6px #ccc;
+
+    p {
+      margin: 0;
+    }
+
+    .signout-btn {
+      padding: 4px 8px;
+      margin: 5px;
+    }
+  }
+
+  .dashboard-body {
+    padding: 20px;
+  }
+}
