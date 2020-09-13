@@ -6,32 +6,37 @@ const SignUp = ({ history }) => {
   const handleSignUp = useCallback(
     async (event) => {
       event.preventDefault();
-      const { email, password } = event.target.elements;
+      const { fullName, email, password } = event.target.elements;
       try {
         await app
           .auth()
-          .createUserWithEmailAndPassword(email.value, password.value);
-        history.push("/dashboard");
+          .createUserWithEmailAndPassword(email.value, password.value)
+          .then((result) => {
+            const user = app.auth().currentUser;
+            return user.updateProfile({
+              displayName: fullName,
+            });
+          });
       } catch (error) {
         alert(error);
       }
+      history.push("/dashboard");
     },
     [history]
   );
 
   return (
-    <div classNAme="home-container">
-      <h1>Movie Match</h1>
-      <div className="login-box">
-        <h3>Create an Account</h3>
-        <form className="login-form" onSubmit={handleSignUp}>
-          <label htmlFor="Email">Email</label>
-          <input type="text" className="login-email" name="email" />
-          <label htmlFor="Password">Password</label>
-          <input type="password" className="login-password" name="password" />
-          <input type="submit" className="login-submit" value="Sign Up" />
-        </form>
-      </div>
+    <div className="login-box">
+      <h3>Create an Account</h3>
+      <form className="login-form" onSubmit={handleSignUp}>
+        <label htmlFor="fullName">First Name</label>
+        <input type="text" className="login-name" name="fullName" />
+        <label htmlFor="Email">Email</label>
+        <input type="email" className="login-email" name="email" />
+        <label htmlFor="Password">Password</label>
+        <input type="password" className="login-password" name="password" />
+        <input type="submit" className="login-submit" value="Sign Up" />
+      </form>
     </div>
   );
 };
