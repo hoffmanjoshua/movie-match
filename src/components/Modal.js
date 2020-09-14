@@ -12,7 +12,7 @@ const Modal = ({ handleClose, show, children }) => {
     return () => {
       document.removeEventListener("mousedown", handleClick, false);
     };
-  }, []);
+  });
 
   const handleClick = (e) => {
     if (modalBody.current.contains(e.target)) {

@@ -58,19 +58,31 @@ const Dashboard = () => {
           <div class="add-form-wrapper">
             <form>
               <label for="title">Film Title</label>
-              <input type="text" name="title" required />
+              <input
+                type="text"
+                name="title"
+                placeholder="ie. Moana"
+                required
+              />
               <label for="relYear">Release Year</label>
               <input
                 type="number"
                 name="relYear"
                 min="1900"
                 max="2020"
-                defaultValue="2020"
+                defaultValue="2016"
                 required
                 step="1"
               />
-              <label for="haveWatched">Have you watched?</label>
-              <input type="checkbox" name="haveWatched" />
+              <label class="check">Have you watched it yet?</label>
+              <input
+                type="checkbox"
+                className="block-centered"
+                onClick={(e) => {
+                  console.log(e.target.checked);
+                }}
+              />
+
               <button type="submit">Add Film</button>
             </form>
           </div>
