@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import "./App.scss";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -18,9 +23,12 @@ function App() {
         <div className="home-container">
           <h1>Movie Match</h1>
           <Router>
-            <Route exact path="/" component={Login} />
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/signup" component={SignUp} />
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <Route path="/signup" component={SignUp} />
+              <Route path="/" component={Login} />
+              <Redirect exact from="*" to="/" />
+            </Switch>
           </Router>
         </div>
       </div>

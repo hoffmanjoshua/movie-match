@@ -1,5 +1,6 @@
-import React, { useCallback } from "react";
-import { withRouter } from "react-router";
+import React, { useCallback, useContext } from "react";
+import { withRouter, Redirect } from "react-router";
+import { AuthContext } from "../Auth.js";
 import app from "../firebase";
 
 const SignUp = ({ history }) => {
@@ -24,6 +25,12 @@ const SignUp = ({ history }) => {
     },
     [history]
   );
+
+  const { currentUser } = useContext(AuthContext);
+
+  if (currentUser) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <div className="login-box">
