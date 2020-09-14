@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.scss";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -15,7 +15,7 @@ function App() {
   return (
     <AuthProvider>
       <div className="App">
-        <div class="home-container">
+        <div className="home-container">
           <h1>Movie Match</h1>
           <Router>
             <Route exact path="/" component={Login} />

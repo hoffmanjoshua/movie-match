@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from "react";
-import { withRouter, Redirect } from "react-router";
+import { Redirect } from "react-router";
 import app from "../firebase";
 import { AuthContext } from "../Auth.js";
 import FormError from "./FormError";

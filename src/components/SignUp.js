@@ -4,23 +4,23 @@ import app from "../firebase";
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(
-    async (event) => {
+    (event) => {
       event.preventDefault();
       const { fullName, email, password } = event.target.elements;
-      try {
-        await app
-          .auth()
-          .createUserWithEmailAndPassword(email.value, password.value)
-          .then((result) => {
-            const user = app.auth().currentUser;
-            return user.updateProfile({
-              displayName: fullName,
-            });
-          });
-      } catch (error) {
-        alert(error);
-      }
-      history.push("/dashboard");
+      app
+        .auth()
+        .createUserWithEmailAndPassword(email.value, password.value)
+        .then((res) => {
+          console.log(fullName.value);
+          res.user
+            .updateProfile({
+              displayName: fullName.value,
+            })
+            .then(history.push("/dashboard"));
+        })
+        .catch((error) => {
+          alert(error);
+        });
     },
     [history]
   );
